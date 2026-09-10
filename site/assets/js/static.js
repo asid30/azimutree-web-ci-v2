@@ -19,3 +19,19 @@ if (secretForm) {
   });
 }
 if (quiz) { if (isUnlocked()) quiz.hidden = false; else location.replace('../secret/'); }
+
+// Google Play availability notice; native dialog supports Escape and focus trapping.
+const playStoreButton = document.getElementById('playStoreButton');
+const playStoreDialog = document.getElementById('playStoreDialog');
+if (playStoreButton && playStoreDialog) {
+  playStoreButton.addEventListener('click', () => playStoreDialog.showModal());
+  playStoreDialog.addEventListener('click', event => {
+    const bounds = playStoreDialog.getBoundingClientRect();
+    if (event.target === playStoreDialog &&
+        (event.clientX < bounds.left || event.clientX > bounds.right ||
+         event.clientY < bounds.top || event.clientY > bounds.bottom)) {
+      playStoreDialog.close();
+    }
+  });
+  playStoreDialog.addEventListener('close', () => playStoreButton.focus());
+}

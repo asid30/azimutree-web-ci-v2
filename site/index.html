@@ -5,13 +5,19 @@
         <div class="container">
             <h1>Azimutree</h1>
             <p class="lead">Temukan kembali lokasi penelitian hutan — kelola Titik Ikat, klaster, plot, dan pohon, lalu gunakan kompas dan radar untuk survei lapangan.</p>
-            <p style="margin-top:.5rem;font-weight:700;color:#0b6efd">Untuk Android · Data lokal di perangkat · Berbagi melalui Penyimpanan Awan</p>
-            <p class="cta">
-                <a id="download" class="btn primary" href="https://github.com/asid30/azimutree-flutter/releases/download/v1.1.26/app-release-azimutree-v1.1.26.apk" target="_blank" rel="noopener noreferrer">Unduh APK v1.1.26</a>
+            <div class="cta download-options">
+                <button id="playStoreButton" class="btn play-store-button" type="button" aria-haspopup="dialog" aria-controls="playStoreDialog">
+                    <img src="./assets/icon_play_store.webp" alt="" width="30" height="30">
+                    <span class="play-store-label"><span class="play-store-status">Segera hadir di</span><span class="play-store-name">Google Play</span></span>
+                </button>
+                <div class="download-secondary">
+                <a id="download" class="btn ghost download-mirror" href="https://github.com/asid30/azimutree-flutter/releases/download/v1.1.26/app-release-azimutree-v1.1.26.apk" target="_blank" rel="noopener noreferrer">Unduh APK (mirror)</a>
                 <a class="btn ghost" href="https://github.com/asid30/azimutree-flutter" target="_blank" rel="noopener noreferrer">Kode Sumber</a>
-            </p>
+                </div>
+            </div>
 
-            <p class="release-note">Unduhan yang tersedia: rilis v1.1.26 (26 Januari 2026). Fitur Titik Ikat, Survey Lokasi, dan Penyimpanan Awan yang dijelaskan di website ini berasal dari pengembangan setelah rilis tersebut. Periksa <a href="https://github.com/asid30/azimutree-flutter/releases" target="_blank" rel="noopener noreferrer">rilis aplikasi</a> untuk pembaruan APK.</p>
+            <p class="platform-note">Hanya untuk Android · Gratis &amp; sumber terbuka</p>
+
             <div class="screenshot-slider">
                 <div class="slider-container">
                     <div class="screenshots">
@@ -76,4 +82,10 @@
     </div>
 </div>
 
+<dialog id="playStoreDialog" class="play-store-dialog" aria-labelledby="playStoreTitle" aria-describedby="playStoreDescription">
+    <img src="./assets/icon_play_store.webp" alt="" width="48" height="48">
+    <h2 id="playStoreTitle">Segera hadir di Google Play</h2>
+    <p id="playStoreDescription">Azimutree belum tersedia di Google Play Store. Unduhan melalui Google Play akan tersedia mendatang. Untuk saat ini, kamu bisa menggunakan tombol unduh APK di halaman ini.</p>
+    <form method="dialog"><button class="btn primary" autofocus>Mengerti</button></form>
+</dialog>
 <script src="./assets/js/app.js"></script><script src="./assets/js/static.js"></script></body></html>
