@@ -167,3 +167,7 @@ c19c2b6 2026-01-14 Merge pull request #49 from asid30:development
 Beranda, Tentang, Panduan, Template, metadata, navigasi, dan README telah diperbarui berdasarkan acuan ini. Keterangan rilis membedakan APK publik v1.1.26 dari fitur development. API GitHub mengonfirmasi rilis terbaru masih v1.1.26, diterbitkan 26 Januari 2026; belum ada APK baru yang diberikan pengguna pada saat pembaruan.
 
 Template Google Sheets telah diunduh untuk pemeriksaan read-only: kelima sheet beserta header cocok dengan format ekspor Flutter. Impor di perangkat Android belum diuji. Halaman publik, aset, anchor panduan, dan penutupan route repositori telah diperiksa melalui HTTP lokal; sintaks PHP dan JavaScript lolos. Deployment belum dijalankan.
+
+## Versi statis GitHub Pages
+
+Website aktif telah dikonversi ke HTML/CSS/JavaScript di `site/`. Pembaruan konten berikutnya dilakukan di sana; file view CodeIgniter dipertahankan sebagai versi lama. Workflow Pages hanya menerbitkan `site/`. Easter egg tetap disertakan dengan gate permainan JavaScript dan sessionStorage.

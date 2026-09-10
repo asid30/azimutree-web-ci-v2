@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Azimutree — Aplikasi Pemetaan Klaster Plot Kesehatan Hutan (FHM)</title><meta name="description" content="Azimutree adalah aplikasi Android open source untuk pemantauan kesehatan hutan, Titik Ikat, survei lokasi, pemetaan klaster, dan berbagi data penelitian dengan metode Forest Health Monitoring (FHM)."><link rel="icon" href="./icon.ico"><link rel="stylesheet" href="./assets/css/style.css"></head>
+<body><header class="site-header appbar"><div class="container appbar-inner"><div class="appbar-left"><a class="brand" href="./"><img src="./assets/icon-128.webp" alt="Azimutree logo" class="logo"><span class="brand-text">Azimutree</span></a></div><div class="appbar-right"><nav class="appbar-nav" aria-label="Navigasi utama"><a class="app-link" href="./">🏠 Beranda</a><a class="app-link" href="./template/">📄 Template</a><a class="app-link" href="./panduan/">📘 Panduan</a><a class="app-link" href="./about/">ℹ️ Tentang</a><a class="app-link" href="https://forms.gle/7KE2jecH4CiNQxTg9" target="_blank" rel="noopener noreferrer">📝 Saran</a></nav><button id="menuToggle" class="menu-btn" aria-label="Buka menu" aria-controls="menu" aria-expanded="false">☰</button></div></div></header><nav id="menu" class="mobile-sidebar hidden" aria-label="Navigasi seluler" aria-hidden="true"><div class="container"><div class="mobile-sidebar-header"><h3>Menu</h3></div><a class="app-link" href="./">🏠 Beranda</a><a class="app-link" href="./template/">📄 Template</a><a class="app-link" href="./panduan/">📘 Panduan</a><a class="app-link" href="./about/">ℹ️ Tentang</a><a class="app-link" href="https://forms.gle/7KE2jecH4CiNQxTg9" target="_blank" rel="noopener noreferrer">📝 Saran</a></div></nav><main>
+    <section class="hero">
+        <div class="container">
+            <h1>Azimutree</h1>
+            <p class="lead">Temukan kembali lokasi penelitian hutan — kelola Titik Ikat, klaster, plot, dan pohon, lalu gunakan kompas dan radar untuk survei lapangan.</p>
+            <p style="margin-top:.5rem;font-weight:700;color:#0b6efd">Untuk Android · Data lokal di perangkat · Berbagi melalui Penyimpanan Awan</p>
+            <p class="cta">
+                <a id="download" class="btn primary" href="https://github.com/asid30/azimutree-flutter/releases/download/v1.1.26/app-release-azimutree-v1.1.26.apk" target="_blank" rel="noopener noreferrer">Unduh APK v1.1.26</a>
+                <a class="btn ghost" href="https://github.com/asid30/azimutree-flutter" target="_blank" rel="noopener noreferrer">Kode Sumber</a>
+            </p>
+
+            <p class="release-note">Unduhan yang tersedia: rilis v1.1.26 (26 Januari 2026). Fitur Titik Ikat, Survey Lokasi, dan Penyimpanan Awan yang dijelaskan di website ini berasal dari pengembangan setelah rilis tersebut. Periksa <a href="https://github.com/asid30/azimutree-flutter/releases" target="_blank" rel="noopener noreferrer">rilis aplikasi</a> untuk pembaruan APK.</p>
+            <div class="screenshot-slider">
+                <div class="slider-container">
+                    <div class="screenshots">
+                        <img src="./assets/1.webp?v=1789025202" alt="Tampilan aplikasi Azimutree 1" width="1080" height="2436" onerror="this.style.display='none'">
+                        <img src="./assets/2.webp?v=1789025202" alt="Tampilan aplikasi Azimutree 2" width="1080" height="2436" loading="lazy" onerror="this.style.display='none'">
+                        <img src="./assets/3.webp?v=1789025202" alt="Tampilan aplikasi Azimutree 3" width="1080" height="2436" loading="lazy" onerror="this.style.display='none'">
+                        <img src="./assets/4.webp?v=1789025203" alt="Tampilan aplikasi Azimutree 4" width="1080" height="2436" loading="lazy" onerror="this.style.display='none'">
+                        <img src="./assets/5.webp?v=1789025203" alt="Tampilan aplikasi Azimutree 5" width="1080" height="2436" loading="lazy" onerror="this.style.display='none'">
+                        <img src="./assets/6.webp?v=1789025204" alt="Tampilan aplikasi Azimutree 6" width="1080" height="2436" loading="lazy" onerror="this.style.display='none'">
+                    </div>
+                </div>
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                    <span class="dot" data-slide="3"></span>
+                    <span class="dot" data-slide="4"></span>
+                    <span class="dot" data-slide="5"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="section">
+        <div class="container">
+            <h2>Pemetaan dan Navigasi untuk Penelitian Hutan</h2>
+            <p><strong>Azimutree</strong> membantu kegiatan Forest Health Monitoring (FHM) melalui pencatatan dan pencarian kembali lokasi penelitian. Data utama disimpan secara lokal di perangkat; Anda memilih sendiri kapan mengekspor atau mengunggahnya.</p>
+            <p>Aplikasi berfokus pada lokasi dan navigasi lapangan, bukan pencatatan lengkap nilai kesehatan pohon atau hutan.</p>
+            <div class="features">
+                <div class="feature-card"><h3>Titik Ikat dan Data Klaster</h3><p>Simpan satu Titik Ikat sebagai referensi awal setiap klaster, hingga empat plot, dan data pohon di masing-masing plot. Tentukan posisi lewat koordinat atau azimut dan jarak.</p></div>
+                <div class="feature-card"><h3>Survey Lokasi</h3><p>Dekati Titik Ikat dengan GPS dan peta kecil, lalu ikuti kompas dan jarak referensi menuju plot. Sesi survei dapat dilanjutkan setelah kembali ke Beranda.</p></div>
+                <div class="feature-card"><h3>Radar Pohon</h3><p>Lihat arah pohon dari pusat plot, saring daftar mengikuti arah kompas, dan pin pohon yang sedang dicari. Radar memakai pusat plot sebagai referensi.</p></div>
+                <div class="feature-card"><h3>Peta Digital</h3><p>Tampilkan Titik Ikat, plot, pohon, area plot, dan garis relasi di peta Mapbox. Cari data lokal atau lokasi, lalu gunakan Tracking Data untuk memilih tujuan.</p></div>
+                <div class="feature-card"><h3>Penyimpanan Awan</h3><p>Cari dan unduh data penelitian publik tanpa login. Login Google untuk mengunggah klaster serta mengelola folder penelitian publik atau privat. Unggah dan unduh dilakukan manual.</p></div>
+                <div class="feature-card"><h3>Impor dan Ekspor Excel</h3><p>Pindahkan satu atau beberapa klaster beserta Titik Ikat, plot, dan pohon melalui format Excel terstruktur untuk berbagi data atau membuat cadangan.</p></div>
+            </div>
+            <p><a href="./about/" class="app-link">Tentang Azimutree →</a> <a href="./panduan/" class="app-link">Pelajari panduan penggunaan →</a></p>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h2>Dari Data ke Lokasi Lapangan</h2>
+            <ol>
+                <li><strong>Siapkan data.</strong> Buat klaster dan Titik Ikat, impor Excel, atau unduh data publik ke perangkat.</li>
+                <li><strong>Temukan lokasi.</strong> Gunakan Survey Lokasi untuk mendekati Titik Ikat dan menuju plot berdasarkan referensi lapangan.</li>
+                <li><strong>Simpan dan bagikan.</strong> Ekspor beberapa klaster atau unggah secara manual ke Penyimpanan Awan.</li>
+            </ol>
+            <p>Pengelolaan data lokal tidak memerlukan akun. Pemuatan peta daring, login Google, dan layanan awan membutuhkan internet. Ketepatan navigasi bergantung pada data, GPS, kompas, dan kondisi lapangan.</p>
+        </div>
+    </section>
+</main><footer class="site-footer"><div class="container"><p>© <span data-year>2026</span> Azimutree · Lisensi MIT · Dikembangkan oleh Asid30</p></div></footer><div id="downloadModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="downloadModalTitle">
+    <div class="modal-backdrop"></div>
+    <div class="modal-box" role="document">
+        <h3 id="downloadModalTitle">Unduh APK Azimutree</h3>
+        <p class="muted" style="margin-top:.5rem">⚠️ Catatan: Aplikasi ini diinstal di luar Play Store.<br>Aktifkan “Izinkan dari sumber ini” saat diminta oleh Android.</p>
+        <p class="release-note">APK v1.1.26 berasal dari 26 Januari 2026, sebelum penambahan Titik Ikat, Survey Lokasi, dan Penyimpanan Awan yang dijelaskan dalam panduan terbaru.</p>
+        <p id="downloadVersion" class="muted" style="margin-top:.5rem"></p>
+        <div class="modal-actions" style="margin-top:1rem">
+            <button id="downloadConfirm" class="btn primary">Lanjutkan dan Unduh</button>
+            <button id="downloadCancel" class="btn ghost">Batal</button>
+        </div>
+    </div>
+</div>
+
+<script src="./assets/js/app.js"></script><script src="./assets/js/static.js"></script></body></html>

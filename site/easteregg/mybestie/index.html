@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quiz spesial untuk kamu</title><meta name="description" content="Halaman spesial Azimutree."><link rel="icon" href="../../icon.ico"><link rel="stylesheet" href="../../assets/css/style.css">
+    <style>
+    .quiz-card { max-width:720px; margin:3rem auto; background:var(--card); border-radius:12px; box-shadow:0 6px 24px rgba(0,0,0,0.5); padding:1.5rem; color:var(--text); text-align:left }
+    .quiz-header { text-align:center; margin-bottom:1rem }
+    .quiz-header h1{ color:var(--text); }
+    .quiz-header p{ color:var(--muted); }
+    .question { font-size:1.2rem; margin:1rem 0; color:var(--text) }
+    .options { display:flex; flex-direction:column; gap:.6rem; position:relative; min-height:0; width:fit-content; margin:0.5rem 0; align-items:flex-start }
+    .option-btn { display:inline-block; padding:.8rem 1rem; border:1px solid rgba(255,255,255,0.04); border-radius:8px; background:rgba(255,255,255,0.02); cursor:pointer; text-align:left; color:var(--text); width:auto; min-width:140px; box-sizing:border-box; max-width:100% }
+    .option-btn.correct { background:rgba(52,211,153,0.12); border-color:rgba(52,211,153,0.28); }
+    .option-btn.wrong { background:rgba(255,77,77,0.06); border-color:rgba(255,77,77,0.12); }
+    .option-btn:disabled { opacity:.85; cursor:default }
+    .controls { display:flex; justify-content:space-between; align-items:center; margin-top:1rem }
+    .progress { font-size:.95rem; color:var(--muted) }
+    .result { text-align:center; padding:1.5rem }
+    .prize { font-size:1.25rem; color:var(--accent); font-weight:700 }
+    .btn.primary{ background:var(--accent); color:#07221a }
+</style>
+<meta name="robots" content="noindex"></head>
+<body><main><div data-easteregg-quiz hidden>
+    <div class="container">
+        <div class="quiz-card">
+            <div class="quiz-header">
+                <h1>Hai bestie 👋</h1>
+                <div id="alwaysPrize" class="prize" style="margin-top:.5rem">Jawab 3 petanyaan ini nanti ku kasi sepress  🎁</div>
+            </div>
+
+            <div id="quizArea">
+                <div id="qMeta" class="progress">Pertanyaan <span id="qIndex">1</span> / <span id="qTotal">3</span></div>
+                <div id="qBox" class="question"></div>
+                <div id="opts" class="options"></div>
+
+                <div class="controls">
+                    <div id="feedback" style="min-height:1.2rem;color:#333"></div>
+                    <div>
+                        <button id="nextBtn" class="btn" disabled>Next</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultArea" class="result" style="display:none">
+                <div id="finalMsg"></div>
+                <div id="finalImage" style="margin-top:1rem; text-align:center; display:none">
+                    <div style="max-width:640px; margin:0 auto;">
+                        <img id="finalImg" src="../../assets/secretassets/rndm_img_6.jpg" alt="hadiah" style="width:100%; border-radius:8px; box-shadow:0 8px 30px rgba(0,0,0,.6)">
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function(){
+            const questions = [
+                { q: 'apa warna langit disiang hari cerah?', opts: ['hijau','pink','biru'], correct: 2 },
+                { q: 'bunga apa yang identik sama nama kamu?', opts: ['anggrek','mawar','tulip'], correct: 0 },
+                { q: 'kamu sayang aku ga?', opts: ['sayang','najoooong'], correct: 0 }
+            ];
+
+            let idx = 0; let score = 0; let answered = false;
+            const qTotal = questions.length;
+            const qIndex = document.getElementById('qIndex');
+            const qTotalEl = document.getElementById('qTotal'); qTotalEl.textContent = qTotal;
+            const qBox = document.getElementById('qBox');
+            const opts = document.getElementById('opts');
+            const feedback = document.getElementById('feedback');
+            const nextBtn = document.getElementById('nextBtn');
+            const resultArea = document.getElementById('resultArea');
+            const quizArea = document.getElementById('quizArea');
+            const finalMsg = document.getElementById('finalMsg');
+
+            function render(){
+                // remove any leftover evasive button from previous question
+                const existingE = document.getElementById('evasive-btn');
+                if (existingE && existingE.parentNode) existingE.parentNode.removeChild(existingE);
+
+                answered = false; nextBtn.disabled = true; feedback.textContent = '';
+                opts.style.width = ''; opts.style.minHeight = '';
+                qIndex.textContent = idx+1;
+                const item = questions[idx]; qBox.textContent = item.q;
+                opts.innerHTML = '';
+                item.opts.forEach((o,i)=>{
+                        const btn = document.createElement('button');
+                        btn.className = 'option-btn'; btn.type = 'button'; btn.textContent = o;
+                        // Special evasive behavior for the third question's 'najoooong' option
+                        if (idx === 2 && o.toLowerCase().includes('naj')) {
+                            // create a static placeholder button inside the options list
+                            btn.classList.add('naj-static');
+                            btn.type = 'button';
+                            // when static is hovered/clicked the evasive fixed button spawns and static disappears
+                            let spawned = false;
+                            function spawnEvasive(e){
+                                if (spawned) return; spawned = true;
+                                // remove static from options
+                                try{ if (btn.parentNode) btn.parentNode.removeChild(btn); }catch(err){}
+
+                                // create evasive fixed button
+                                const evBtn = document.createElement('button');
+                                evBtn.id = 'evasive-btn';
+                                evBtn.className = 'option-btn evasive';
+                                evBtn.textContent = o;
+                                evBtn.style.position = 'fixed';
+                                evBtn.style.zIndex = 9999;
+                                evBtn.style.transition = 'left .18s ease, top .18s ease, transform .12s ease';
+
+                                // place initial button near the quiz card to avoid immediate teleport
+                                const rect = opts.getBoundingClientRect();
+                                const startLeft = Math.min(Math.max(rect.left + rect.width/2 - 60, 12), window.innerWidth - 80);
+                                const startTop = Math.min(Math.max(rect.top + 24 + (i * 44), 12), window.innerHeight - 48);
+                                evBtn.style.left = startLeft + 'px';
+                                evBtn.style.top = startTop + 'px';
+
+                                // append to body
+                                document.body.appendChild(evBtn);
+
+                                const narrow = window.innerWidth <= 480;
+
+                                function moveEvasive(el, ev){
+                                    const vw = window.innerWidth;
+                                    const vh = window.innerHeight;
+                                    const safe = narrow ? 36 : 24; // safe margin from edges
+
+                                    const origin = {
+                                        x: ev && ev.clientX ? ev.clientX : (el.getBoundingClientRect().left + el.offsetWidth/2),
+                                        y: ev && ev.clientY ? ev.clientY : (el.getBoundingClientRect().top + el.offsetHeight/2),
+                                    };
+
+                                    const factor = narrow ? 0.8 : 0.6;
+                                    const minDist = Math.max(vw, vh) * factor;
+
+                                    const btnW = Math.max(el.offsetWidth || 60, 60);
+                                    const btnH = Math.max(el.offsetHeight || 32, 32);
+
+                                    const minX = safe;
+                                    const maxX = Math.max(safe, vw - safe - btnW);
+                                    const minY = safe;
+                                    const maxY = Math.max(safe, vh - safe - btnH);
+
+                                    let nx = 0, ny = 0, attempts = 0, dx = 0, dy = 0;
+                                    do {
+                                        nx = Math.floor(Math.random() * (maxX - minX + 1)) + minX;
+                                        ny = Math.floor(Math.random() * (maxY - minY + 1)) + minY;
+                                        dx = nx - origin.x; dy = ny - origin.y;
+                                        attempts++; if (attempts > 200) break;
+                                    } while (Math.sqrt(dx*dx + dy*dy) < minDist);
+
+                                    el.style.left = nx + 'px'; el.style.top = ny + 'px';
+                                }
+
+                                evBtn.addEventListener('mouseenter', (e)=> moveEvasive(evBtn, e));
+                                evBtn.addEventListener('click', (e)=>{ e.preventDefault(); moveEvasive(evBtn, e); });
+                            }
+
+                            // static button only spawns evasive on hover or click; it does not select the answer
+                            btn.addEventListener('mouseenter', spawnEvasive, { once: true });
+                            btn.addEventListener('click', function(e){ e.preventDefault(); spawnEvasive(); }, { once: true });
+                            opts.appendChild(btn);
+                        } else {
+                            btn.addEventListener('click', ()=> selectOption(btn,i));
+                            opts.appendChild(btn);
+                        }
+                    });
+            }
+
+            function selectOption(btn, i){
+                if (answered) return; answered = true;
+                const item = questions[idx];
+                const children = Array.from(opts.children);
+                children.forEach((b,ii)=> b.disabled = true);
+                // also disable evasive button if present
+                const evasive = document.getElementById('evasive-btn');
+                if (evasive) evasive.disabled = true;
+                    if (i === item.correct){
+                        btn.classList.add('correct'); score++;
+                        // special message for question 3 correct
+                        if (idx === 2) {
+                            feedback.style.color = '#0a8'; feedback.textContent = 'Benar! 😱';
+                        } else {
+                            feedback.style.color = '#0a8'; feedback.textContent = 'Benar!';
+                        }
+                    } else {
+                        btn.classList.add('wrong');
+                        if (children[item.correct]) children[item.correct].classList.add('correct');
+                        feedback.style.color = '#b00';
+                        // custom wrong messages per question
+                        if (idx === 0) {
+                            feedback.textContent = 'salah';
+                        } else if (idx === 1) {
+                            feedback.textContent = 'masa kamu gatau nama sendiri';
+                        } else {
+                            feedback.textContent = 'Yah, itu salah.';
+                        }
+                    }
+                nextBtn.disabled = false;
+            }
+
+            nextBtn.addEventListener('click', ()=>{
+                if (!answered) return;
+                if (idx < qTotal - 1){ idx++; render(); }
+                else { finish(); }
+            });
+
+            function finish(){
+                quizArea.style.display = 'none'; resultArea.style.display = 'block';
+
+                // Clear finalMsg (persistent prize message shown separately)
+                finalMsg.innerHTML = '';
+
+                // remove any evasive floating button so it won't remain after finish
+                const evasiveRem = document.getElementById('evasive-btn');
+                if (evasiveRem && evasiveRem.parentNode) evasiveRem.parentNode.removeChild(evasiveRem);
+
+                // show single final image (rndm_img_6)
+                const finalImgWrapper = document.getElementById('finalImage');
+                if (finalImgWrapper) finalImgWrapper.style.display = 'block';
+                // update persistent prize text to post-quiz message
+                const always = document.getElementById('alwaysPrize');
+                if (always) always.innerHTML = 'SELAMAT! Ini sepress untuk kamu 🎁';
+            }
+
+            // initial
+            render();
+        })();
+    </script>
+</div></main><footer class="site-footer"><div class="container"><p>© <span data-year>2026</span> Azimutree · Lisensi MIT · Dikembangkan oleh Asid30</p></div></footer><script src="../../assets/js/app.js"></script><script src="../../assets/js/static.js"></script></body></html>
