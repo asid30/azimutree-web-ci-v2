@@ -1,0 +1,5 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/aziw7273/public_html
+    - rm -rf $DEPLOYPATH/*
+    - cp -R public/* $DEPLOYPATH/
