@@ -826,7 +826,7 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       // extract version from URL and show in modal
       var versionEl = document.getElementById("downloadVersion");
-      var href = downloadBtn.getAttribute("href") || "";
+      var href = "v" + (downloadBtn.getAttribute("data-version") || "") + " " + (downloadBtn.getAttribute("href") || "");
       var m = href.match(/v(\d+\.\d+\.\d+)/);
       if (versionEl)
         versionEl.textContent = m
