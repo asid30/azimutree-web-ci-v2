@@ -824,14 +824,14 @@ document.addEventListener("DOMContentLoaded", function () {
     downloadBtn.addEventListener("click", function (e) {
       // prevent immediate navigation
       e.preventDefault();
-      // extract version from URL and show in modal
+      // Read the release version independently of the mirror redirect URL.
       var versionEl = document.getElementById("downloadVersion");
-      var href = "v" + (downloadBtn.getAttribute("data-version") || "") + " " + (downloadBtn.getAttribute("href") || "");
-      var m = href.match(/v(\d+\.\d+\.\d+)/);
-      if (versionEl)
-        versionEl.textContent = m
-          ? "Versi APK unduhan: " + m[1]
-          : "Versi APK unduhan: tidak diketahui";
+      var version = downloadBtn.getAttribute("data-version");
+      var match = (downloadBtn.getAttribute("href") || "").match(/v(\d+\.\d+\.\d+)/);
+      if (!version && match) version = match[1];
+      if (versionEl) {
+        versionEl.textContent = version ? "Versi APK unduhan: " + version : "";
+      }
       // show modal
       dlModal.classList.remove("hidden");
       // focus confirm
