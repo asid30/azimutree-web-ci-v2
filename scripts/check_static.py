@@ -49,7 +49,7 @@ for path, doc in pages.items():
             assert unquote(u.fragment) in pages[target].ids, (path, ref)
 assert not (ROOT / 'repositori-data').exists()
 required_pages = {'index.html', 'about/index.html', 'guide/index.html',
-                  'template/index.html', 'account-deletion/index.html', 'privacy-policy/index.html',
+                  'template/index.html', 'sample-data/index.html', 'feedback/index.html', 'account-deletion/index.html', 'privacy-policy/index.html',
                   'easteregg/secret/index.html', 'easteregg/mybestie/index.html', '404.html'}
 assert required_pages <= {str(p.relative_to(ROOT.resolve())) for p in pages}
 print(f'PASS: {len(pages)} HTML pages; local links, assets, anchors, and publish boundary verified.')

@@ -1,35 +1,180 @@
-<!DOCTYPE html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Template Excel</title><meta name="description" content="Template Excel Azimutree untuk impor beberapa klaster, Titik Ikat, plot, dan pohon, lengkap dengan petunjuk pengisian."><link rel="icon" href="../icon.ico"><link rel="stylesheet" href="../assets/css/style.css"></head>
-<body><header class="site-header appbar"><div class="container appbar-inner"><div class="appbar-left"><a class="brand" href="../"><img src="../assets/icon-128.webp" alt="Azimutree logo" class="logo"><span class="brand-text">Azimutree</span></a></div><div class="appbar-right"><nav class="appbar-nav" aria-label="Navigasi utama"><a class="app-link" href="../">🏠 Beranda</a><a class="app-link" href="../template/">📄 Template</a><a class="app-link" href="../guide/">📘 Panduan</a><a class="app-link" href="../about/">ℹ️ Tentang</a><a class="app-link" href="https://forms.gle/7KE2jecH4CiNQxTg9" target="_blank" rel="noopener noreferrer">📝 Saran</a></nav><button id="menuToggle" class="menu-btn" aria-label="Buka menu" aria-controls="menu" aria-expanded="false">☰</button></div></div></header><nav id="menu" class="mobile-sidebar hidden" aria-label="Navigasi seluler" aria-hidden="true"><div class="container"><div class="mobile-sidebar-header"><h3>Menu</h3></div><a class="app-link" href="../">🏠 Beranda</a><a class="app-link" href="../template/">📄 Template</a><a class="app-link" href="../guide/">📘 Panduan</a><a class="app-link" href="../about/">ℹ️ Tentang</a><a class="app-link" href="https://forms.gle/7KE2jecH4CiNQxTg9" target="_blank" rel="noopener noreferrer">📝 Saran</a></div></nav><main>
-    
-
-    <section class="section">
-        <div class="container">
-            <h1>Template Excel untuk Azimutree</h1>
-            <p>Gunakan template ini untuk menyiapkan satu atau beberapa klaster beserta Titik Ikat, plot, dan pohon, lalu impor ke aplikasi Android Azimutree.</p>
-            <p class="release-note">Template ini menggunakan format lima sheet untuk aplikasi yang mendukung Titik Ikat dan impor beberapa klaster. Formatnya berbeda dari alur aplikasi lama; cocokkan dengan versi aplikasi Anda sebelum mengimpor.</p>
-            <h2>Isi Template</h2>
-            <ul>
-                <li><strong>panduan:</strong> aturan pengisian, satuan, dan format tanggal.</li>
-                <li><strong>klaster:</strong> kode klaster, nama pengukur, dan tanggal pengukuran.</li>
-                <li><strong>titik_ikat:</strong> koordinat referensi setiap klaster serta informasi tambahan.</li>
-                <li><strong>plot:</strong> kode plot dan koordinatnya, dihubungkan melalui kode klaster.</li>
-                <li><strong>pohon:</strong> identitas pohon, azimut, dan jarak terhadap plot terkait.</li>
-            </ul>
-            <h2>Cara Mengisi</h2>
-            <ol>
-                <li>Unduh file XLSX dan baca sheet panduan terlebih dahulu.</li>
-                <li>Isi seluruh kolom bertanda *. Pertahankan nama sheet dan judul kolom.</li>
-                <li>Gunakan kode klaster yang sama pada semua sheet terkait, satu Titik Ikat per klaster, dan maksimal empat plot.</li>
-                <li>Gunakan tanggal YYYY-MM-DD, lintang/bujur desimal, azimut dalam derajat, serta jarak dan ketinggian dalam meter.</li>
-                <li>Periksa hubungan klaster, plot, dan pohon sebelum memilih Impor Data di aplikasi.</li>
-            </ol>
-            <p>Nama file boleh diubah. File hasil ekspor aplikasi dengan format yang sama juga dapat digunakan sebagai dasar pengisian. Untuk gambar, ikuti petunjuk URL pada template dan pastikan link dapat diakses.</p>
-            <p><a href="../guide/#excel">Baca panduan impor dan ekspor →</a></p>
-            <div class="template-actions" style="margin-top:1rem">
-                <a class="btn primary" href="https://docs.google.com/spreadsheets/d/1EN-vjd3Tn1Q1wAyW599V07c_YIaMHK4fgSvLvuOS3pI/export?format=xlsx" target="_blank" rel="noopener">Klik untuk mendownload template (XLSX)</a>
-                <a class="btn ghost" href="../">Kembali</a>
-            </div>
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Template Excel</title>
+    <meta
+      name="description"
+      content="Template Excel Azimutree untuk impor beberapa klaster, Titik Ikat, plot, dan pohon, lengkap dengan petunjuk pengisian."
+    />
+    <link rel="icon" href="../icon.ico" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header appbar">
+      <div class="container appbar-inner">
+        <div class="appbar-left">
+          <a class="brand" href="../"
+            ><img
+              src="../assets/icon-128.webp"
+              alt="Azimutree logo"
+              class="logo"
+            /><span class="brand-text">Azimutree</span></a
+          >
         </div>
-    </section>
-</main><footer class="site-footer"><div class="container"><p>© <span data-year>2026</span> Azimutree · Lisensi MIT · Dikembangkan oleh Asid30</p><p><a class="app-link" href="../account-deletion/">Penghapusan Akun dan Data</a> · <a class="app-link" href="../privacy-policy/">Privacy Policy</a></p></div></footer><script src="../assets/js/app.js"></script><script src="../assets/js/static.js"></script></body></html>
+        <div class="appbar-right">
+          <nav class="appbar-nav" aria-label="Navigasi utama">
+            <a class="app-link" href="../">🏠 Beranda</a
+            ><a class="app-link" href="../template/">📄 Template</a
+            ><a class="app-link" href="../guide/">📘 Panduan</a
+            ><a class="app-link" href="../about/">ℹ️ Tentang</a
+            ><a
+              class="app-link"
+              href="../feedback/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >📝 Saran</a
+            >
+          </nav>
+          <button
+            id="menuToggle"
+            class="menu-btn"
+            aria-label="Buka menu"
+            aria-controls="menu"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+    </header>
+    <nav
+      id="menu"
+      class="mobile-sidebar hidden"
+      aria-label="Navigasi seluler"
+      aria-hidden="true"
+    >
+      <div class="container">
+        <div class="mobile-sidebar-header"><h3>Menu</h3></div>
+        <a class="app-link" href="../">🏠 Beranda</a
+        ><a class="app-link" href="../template/">📄 Template</a
+        ><a class="app-link" href="../guide/">📘 Panduan</a
+        ><a class="app-link" href="../about/">ℹ️ Tentang</a
+        ><a
+          class="app-link"
+          href="../feedback/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >📝 Saran</a
+        >
+      </div>
+    </nav>
+    <main>
+      <section class="section">
+        <div class="container">
+          <h1>Template Excel untuk Azimutree</h1>
+          <p>
+            Gunakan template ini untuk menyiapkan satu atau beberapa klaster
+            beserta Titik Ikat, plot, dan pohon, lalu impor ke aplikasi Android
+            Azimutree.
+          </p>
+          <p class="release-note">
+            Template ini mendukung impor beberapa klaster.
+          </p>
+          <h2>Isi Template</h2>
+          <ul>
+            <li>
+              <strong>panduan:</strong> aturan pengisian, satuan, dan format
+              tanggal.
+            </li>
+            <li>
+              <strong>klaster:</strong> kode klaster, nama pengukur, dan tanggal
+              pengukuran.
+            </li>
+            <li>
+              <strong>titik_ikat:</strong> koordinat referensi setiap klaster
+              serta informasi tambahan.
+            </li>
+            <li>
+              <strong>plot:</strong> kode plot dan koordinatnya, dihubungkan
+              melalui kode klaster.
+            </li>
+            <li>
+              <strong>pohon:</strong> identitas pohon, azimut, dan jarak
+              terhadap plot terkait.
+            </li>
+          </ul>
+          <h2>Cara Mengisi</h2>
+          <ol>
+            <li>Unduh file XLSX dan baca sheet panduan terlebih dahulu.</li>
+            <li>
+              Isi seluruh kolom bertanda *. Pertahankan nama sheet dan judul
+              kolom.
+            </li>
+            <li>
+              Gunakan kode klaster yang sama pada semua sheet terkait, satu
+              Titik Ikat per klaster, dan maksimal empat plot.
+            </li>
+            <li>
+              Gunakan tanggal YYYY-MM-DD, lintang/bujur desimal, azimut dalam
+              derajat, serta jarak dan ketinggian dalam meter.
+            </li>
+            <li>
+              Periksa hubungan klaster, plot, dan pohon sebelum memilih Impor
+              Data di aplikasi.
+            </li>
+          </ol>
+          <p>
+            Nama file boleh diubah. File hasil ekspor aplikasi dengan format
+            yang sama juga dapat digunakan sebagai dasar pengisian. Untuk
+            gambar, ikuti petunjuk URL pada template dan pastikan link dapat
+            diakses.
+          </p>
+          <p><a href="../guide/#excel">Baca panduan impor dan ekspor →</a></p>
+          <div class="template-actions" style="margin-top: 1rem">
+            <a
+              class="btn primary"
+              href="https://docs.google.com/spreadsheets/d/1EN-vjd3Tn1Q1wAyW599V07c_YIaMHK4fgSvLvuOS3pI/export?format=xlsx"
+              target="_blank"
+              rel="noopener"
+              >Klik untuk mendownload template (XLSX)</a
+            >
+            <a class="btn ghost" href="../">Kembali</a>
+          </div>
+          <h2 style="margin-top: 2rem">Data Contoh untuk Pengujian</h2>
+          <p>
+            Gunakan data yang sudah diisi untuk mencoba fitur impor Azimutree.
+            Buka spreadsheet, lalu pilih File → Download → Microsoft Excel
+            (.xlsx) untuk mengunduhnya.
+          </p>
+          <p>
+            <a
+              class="btn ghost mirror-button"
+              href="../sample-data/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Unduh data contoh untuk pengujian</a
+            >
+          </p>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          © <span data-year>2026</span> Azimutree · Lisensi MIT · Dikembangkan
+          oleh Asid30
+        </p>
+        <p>
+          <a class="app-link" href="../account-deletion/"
+            >Penghapusan Akun dan Data</a
+          >
+          · <a class="app-link" href="../privacy-policy/">Privacy Policy</a>
+        </p>
+      </div>
+    </footer>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/static.js"></script>
+  </body>
+</html>
